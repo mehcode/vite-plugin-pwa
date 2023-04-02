@@ -51,7 +51,7 @@ export function registerSW(options: RegisterSWOptions = {}) {
         if (auto) {
           wb.addEventListener('activated', (event) => {
             if (event.isUpdate || event.isExternal)
-              window.location.reload()
+              window.location.href = "/";
           })
           wb.addEventListener('installed', (event) => {
             if (!event.isUpdate) {
@@ -76,7 +76,7 @@ export function registerSW(options: RegisterSWOptions = {}) {
             // service worker has taken control.
             wb?.addEventListener('controlling', (event) => {
               if (event.isUpdate)
-                window.location.reload()
+                window.location.href = "/";
             })
 
             onNeedRefresh?.()
@@ -91,7 +91,7 @@ export function registerSW(options: RegisterSWOptions = {}) {
               }
               else {
                 if (event.isExternal)
-                  window.location.reload()
+                  window.location.href = "/";
                 else
                   !onNeedRefreshCalled && onOfflineReady?.()
               }
